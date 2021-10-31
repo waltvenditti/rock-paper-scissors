@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let drawNum = Math.floor((Math.random() * 3) + 1);
+            let draw = '';
+            switch (drawNum) {
+                case 1:
+                    draw = 'Rock';
+                    break;
+                case 2: 
+                    draw = 'Paper';
+                    break;
+                case 3: 
+                    draw = 'Scissors';
+                    break;
+                default: 
+                    draw = undefined;
+                    break;
+            }
+            if (draw === undefined) {
+                alert("Something went wrong in computerPlay()");
+                return;
+            }
+
+            return draw; 
+        }
+
+        function playerSelection() {
+            let playerChoice;
+
+            while (true) { 
+                playerChoice = prompt("Select rock, paper, or scissors:");
+
+                let fPlayerChoice = playerChoice.toLowerCase();
+                if (fPlayerChoice === 'scissor') {
+                    fPlayerChoice = 'scissors';
+                    playerChoice = 'Scissors'
+                }
+
+                if ((fPlayerChoice != 'rock') && 
+                (fPlayerChoice != 'paper') && 
+                (fPlayerChoice != 'scissors')) {
+                    console.log("Invalid entry.");
+                } else {
+                    break;
+                }
+            }
+            return titleString(playerChoice); 
+        }
+
+        function titleString(string) {
+            let firstLetter = string.slice(0,1);
+            let restOfString = string.slice(1);
+            firstLetter = firstLetter.toUpperCase();
+            restOfString = restOfString.toLowerCase();
+            return (firstLetter + restOfString);
+        }
+
+        function playRound(pcPick, manPick) {
+            // 0 == draw, 1 == pc wins, -1 == player wins
+            let winner = 0;
+            let pc = pcPick.slice(0,1);
+            let man = manPick.slice(0,1);
+
+            if (man == 'R') {
+                if (pc == 'P') {
+                    winner = 1;
+                }
+                if (pc == 'S') {
+                    winner = -1;
+                }
+            }
+
+            if (man == 'P') {
+                if (pc == 'S') {
+                    winner = 1;
+                }
+                if (pc == 'R') {
+                    winner = -1;
+                }
+            }
+
+            if (man == 'S') {
+                if (pc == 'R') {
+                    winner = 1;
+                }
+                if (pc == 'P') {
+                    winner = -1;
+                }
+            } 
+
+            return winner; 
+        }
+
+        function game() {
+            let manScore = 0;
+            let pcScore = 0;
+
+        }
+
+
+    </script>
+</body>
+</html>
