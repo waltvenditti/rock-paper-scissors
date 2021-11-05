@@ -3,143 +3,28 @@
 <head>
     <meta charset="utf-8">
     <title>Rock Paper Scissors</title>
+    <script src='script.js' defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        function computerPlay() {
-            let drawNum = Math.floor((Math.random() * 3) + 1);
-            let draw = '';
-            switch (drawNum) {
-                case 1:
-                    draw = 'Rock';
-                    break;
-                case 2: 
-                    draw = 'Paper';
-                    break;
-                case 3: 
-                    draw = 'Scissors';
-                    break;
-                default: 
-                    draw = undefined;
-                    break;
-            }
-            if (draw === undefined) {
-                alert("Something went wrong in computerPlay()");
-                return;
-            }
-
-            return draw; 
-        }
-
-        function playerSelection() {
-            let playerChoice;
-
-            while (true) { 
-                playerChoice = prompt("Select rock, paper, or scissors:");
-
-                let fPlayerChoice = playerChoice.toLowerCase();
-                if (fPlayerChoice === 'scissor') {
-                    fPlayerChoice = 'scissors';
-                    playerChoice = 'Scissors'
-                }
-
-                if ((fPlayerChoice != 'rock') && 
-                (fPlayerChoice != 'paper') && 
-                (fPlayerChoice != 'scissors')) {
-                    console.log("Invalid entry.");
-                } else {
-                    break;
-                }
-            }
-            return titleString(playerChoice); 
-        }
-
-        function titleString(string) {
-            let firstLetter = string.slice(0,1);
-            let restOfString = string.slice(1);
-            firstLetter = firstLetter.toUpperCase();
-            restOfString = restOfString.toLowerCase();
-            return (firstLetter + restOfString);
-        }
-
-        function playRound(pcPick, manPick) {
-            // 0 == draw, 1 == pc wins, -1 == player wins
-            let winner = 0;
-            let pc = pcPick.slice(0,1);
-            let man = manPick.slice(0,1);
-
-            if (man == pc) {
-                alert("Draw.");
-            }
-
-            if (man == 'R') {
-                if (pc == 'P') {
-                    winner = 1;
-                    alert("Computer picked paper. Win for Computer.");
-                }
-                if (pc == 'S') {
-                    winner = -1;
-                    alert("Computer picked scissors. Win for Player.");
-                }
-            }
-
-            if (man == 'P') {
-                if (pc == 'S') {
-                    winner = 1;
-                    alert("Computer picked scissors. Point for Computer.");
-                }
-                if (pc == 'R') {
-                    winner = -1;
-                    alert("Computer picked rock. Point for Player.");
-                }
-            }
-
-            if (man == 'S') {
-                if (pc == 'R') {
-                    winner = 1;
-                    alert("Computer picked rock. Win for Computer");
-                }
-                if (pc == 'P') {
-                    winner = -1;
-                    alert("Computer picked paper. Win for Player.");
-                }
-            } 
-
-            return winner; 
-        }
-
-        function game() {
-            let manScore = 0;
-            let pcScore = 0;
-            let i = 0;
-
-            while (true) {
-                let manPick = playerSelection();
-                let pcPick = computerPlay();
-                score = playRound(pcPick, manPick);
-                if (score == 1) {
-                    pcScore++;
-                }
-                if (score == -1) {
-                    manScore++;
-                }
-                if (i++ == 4) {
-                    break;
-                }
-            }
-            
-            console.log(`Computer Score: ${pcScore}`);
-            console.log(`Player Score: ${manScore}`);
-            if (pcScore > manScore) {
-                console.log("Computer wins.");
-            } else if (manScore > pcScore) {
-                console.log("Player wins.");
-            } else {
-                console.log("Draw.");
-            }
-        }
-
-
-    </script>
+    <header>
+        <p>Rock - Paper - Scissors</p>
+        <p>Make your choice:</p>
+    </header>
+    <div class="main-container">
+        <button id="btn-r">ROCK</button>
+        <button id="btn-p">PAPER</button>
+        <button id="btn-s">SCISSORS</button>
+    </div>
+    <div class="player-comp-choice">
+        <div class="player-choice">
+            <h6>Player:</h6>
+            <div>FILL</div>
+        </div>
+        <div class="comp-choice">
+            <h6>PC:</h6>
+            <div>FILL</div>
+        </div>
+    </div>
 </body>
 </html>
