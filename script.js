@@ -116,8 +116,8 @@ function removeButtons() {
 function updateChoice(playerChoice, compChoice) {
     let playerChoiceText = document.querySelector('.player-choice .selection');
     let compChoiceText = document.querySelector('.comp-choice .selection');
-    playerChoiceText.textContent = playerChoice;
-    compChoiceText.textContent = compChoice;
+    playerChoiceText.textContent = playerChoice.toUpperCase();
+    compChoiceText.textContent = compChoice.toUpperCase();
 };
 
 // button listeners
