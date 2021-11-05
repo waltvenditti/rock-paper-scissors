@@ -68,10 +68,6 @@ button {
     max-width: 500px;    
 }
 
-.score {
-    font-weight: ; 
-}
-
 .user {
     padding-bottom: 10px;
     
@@ -85,8 +81,6 @@ button {
 
 .player-choice,
 .comp-choice {
-    height: ;
-    width: ;
     border: 0px solid blue;
     display: flex;
     flex-direction: column;
